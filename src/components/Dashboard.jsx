@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
 import history from '../assets/history.png'
 import AddDocument from './AddDocument'
+import { verifyNin } from '../utils/storedData'
 
 function Dashboard() {
   const [show, setShow] = useState(false)
+  const showVerification=(data) => {
+    const {show} = data
+    setShow(show)
+  }
 
   return (
     <div className="dashboard">
@@ -38,7 +43,7 @@ function Dashboard() {
         </div>
       </div>
       {show ? (
-        <AddDocument/>
+        <AddDocument show={showVerification}/>
       ):(
         ""
       )}

@@ -17,19 +17,19 @@ const router = createBrowserRouter([
     errorElement: <PageError/>,
     children: [
       {
-        path: "/",
+        path: "jetverify/",
         element: <LandingPage/>,
       },
       {
-        path: "/signup",
+        path: "jetverify/signup",
         element: <SignUp/>
       },
       {
-        path: "/login",
+        path: "jetverify/login",
         element: <Login />
       },
       {
-        path: "/dashboard",
+        path: "jetverify/dashboard",
         element: <Dashboard/>
       }
     ],

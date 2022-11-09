@@ -1,6 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsindividual, confimState, setConfirmState }) {
 //   const [isIndividual, setIsindividual] = useState(true);
@@ -64,13 +63,14 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
   const handleIndividualLogin = (e) => {
     e.preventDefault();
     data.find((item) => {
-      if (item.email === loginEmail && item.password === loginPassword) {
+      // Change item.username to item.password
+      if (item.email === loginEmail && item.username === loginPassword) {
         setUserDetails({...item})
         setConfirmState(true)
         setUserNotFound(false)
         console.log("email found", userDetails, confimState);
-        return 'user found'
-      }  else {
+        return 'user found';
+      } else {
         console.log('user not found')
         setUserNotFound(true)
       }
@@ -105,7 +105,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
               Organization
             </button>
           </div>
-          <form className="form" onSubmit={handleIndividualLogin}>
+          <form className="form">
             <div className="signup-form-input">
               <div>
                 <label htmlFor="email">Email</label>
@@ -130,7 +130,10 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
 
               {userNotfound && <p className="password-match-text">Email and password do no match</p>}
               <div className="submit-btn-container">
-                <button type="submit" className="signup-btn">
+                <button className="signup-btn"
+                  onClick={(e)=> {
+                    handleIndividualLogin(e);
+                  }}>
                   Proceed
             </button>
               </div>

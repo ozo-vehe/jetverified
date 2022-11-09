@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-// import SignUp from "./routes/SignUp";
 import Login from "./routes/login";
 import { Outlet } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import './App.css';
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [isIndividual, setIsindividual] = useState(true);
@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     if (isIndividual) {
-      fetch("http://localhost:3000/individuals/")
+      fetch("https://jsonplaceholder.typicode.com/users")
         .then((res) => res.json())
         .then((data) => {
           setData(data);
@@ -22,7 +22,7 @@ function App() {
           console.log(data);
         });
     } else {
-      fetch("http://localhost:3000/organizations/")
+      fetch("https://jsonplaceholder.typicode.com/users")
         .then((res) => res.json())
         .then((data) => {
           setData(data);
