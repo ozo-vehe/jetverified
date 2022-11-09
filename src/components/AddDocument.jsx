@@ -8,6 +8,7 @@ function AddDocument({show}) {
   const [verification, setVerification] = useState(false)
   const [docType, setDocType] = useState("")
   const [idNum, setIdNum] = useState("")
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({})
 
   const showPopup = (data)=> {
@@ -44,7 +45,7 @@ function AddDocument({show}) {
                 }}
               >
                 <option value="">Select document type</option>
-                <option value="NIN">NIN</option>
+                <option value="NIN">National Identification Number</option>
                 <option disabled value="BVN">Bank Verification Number</option>
               </select>
             </div>
@@ -95,13 +96,21 @@ function AddDocument({show}) {
             <button
               onClick={async (e)=>{
                 e.preventDefault()
+                setLoading(true)
                 console.log(docType, idNum)
                 const userData = await verify(docType, idNum);
                 console.log(userData)
                 setData(userData)
+                setLoading(false)
                 setVerification(true)
               }}
-            >Proceed</button>
+            >
+              {loading ? (
+                <span className='loader'></span>
+              ):(
+                <span>Proceed</span>
+              )}
+            </button>
           </form>
         )}
       </div>

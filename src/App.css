@@ -355,9 +355,9 @@ h2 { margin-top: 0px; }
 .other-actions {
   width: 100%;
   display: flex;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: top;
 }
 .document-section,
@@ -500,10 +500,11 @@ h2 { margin-top: 0px; }
   width: 100%;
   color: #797878;
   font-family: 'DM Sans';
-  height: 40px;
+  height: 45px;
+  box-sizing: border-box;
   border-radius: 5px;
   border: thin solid #797878;
-  padding: 10px 5px;
+  padding: 10px;
 }
 
 .doc-image {
@@ -551,14 +552,35 @@ h2 { margin-top: 0px; }
   margin-bottom: 10px;
 }
 
-form button {
+.add-document form button {
+  position: relative;
   border: none;
-  min-width: 100px;
+  min-width: 120px;
+  min-height: 45px;
   padding: 15px 30px;
   border-radius: 32px;
   background-color: var(--pry-color);
   color: #f5f5f5;
 }
+.add-document form button .loader {
+  display: block;
+  border-bottom: 2px solid #f5f5f5;
+  width: 20px;
+  display: flex;
+  margin: 0px auto;
+  height: 20px;
+  border-radius: 50%;
+  animation: rotate 0.8s linear forwards infinite;
+}
+@keyframes rotate {
+  from { 
+    transform: rotate(0deg);
+  }  
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* End Section */
 
 /* Document Verifiaction Section */

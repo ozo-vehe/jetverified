@@ -12,7 +12,7 @@ import Dashboard from './components/Dashboard'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    basename: "jetverify/",
     element: <App/>,
     errorElement: <PageError/>,
     children: [

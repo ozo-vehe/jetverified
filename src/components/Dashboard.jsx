@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
 import history from '../assets/history.png'
 import AddDocument from './AddDocument'
-import { verifyNin } from '../utils/storedData'
 
 function Dashboard() {
   const [show, setShow] = useState(false)

@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { dataFromIPFS } from '../utils/storedData'
 
 function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsindividual, confimState, setConfirmState }) {
-//   const [isIndividual, setIsindividual] = useState(true);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-//   const [data, setData] = useState({});
   const [userNotfound, setUserNotFound] = useState(false)
-//   const [userDetails, setUserDetails] = useState({})
+  const navigate = useNavigate()
 
-//   const [isloading, setIsloading] = useState(true);
+  const isUser = async(loginEmail, loginPassword) => {
+    const storedData = await dataFromIPFS()
+    const {email, password} = storedData
+
+    if(loginEmail === email && loginPassword === password) return true
+    else return false
+  }
 
   const handleIndividualAccount = (e) => {
     if (isIndividual) {
@@ -34,31 +39,6 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
   const handleLoginPassword = (e) => {
     setLoginPassword(e.target.value);
   };
-
-  // const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     console.log(loginEmail, loginPassword)
-  // }
-
-//   useEffect(() => {
-//     if (isIndividual) {
-//       fetch("http://localhost:3000/individuals/")
-//         .then((res) => res.json())
-//         .then((data) => {
-//           setData(data);
-//           setIsloading(false);
-//           console.log(data);
-//         });
-//     } else {
-//       fetch("http://localhost:3000/organizations/")
-//         .then((res) => res.json())
-//         .then((data) => {
-//           setData(data);
-//           setIsloading(false);
-//           console.log(data);
-//         });
-//     }
-//   }, [isIndividual]);
 
   const handleIndividualLogin = (e) => {
     e.preventDefault();
@@ -131,11 +111,24 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
               {userNotfound && <p className="password-match-text">Email and password do no match</p>}
               <div className="submit-btn-container">
                 <button className="signup-btn"
-                  onClick={(e)=> {
-                    handleIndividualLogin(e);
+                  onClick={ async (e)=> {
+                    e.preventDefault()
+                    // await isUser(loginEmail, loginPassword)
+                    if(true) {
+                      console.log(isUser(loginEmail, loginPassword))
+                      navigate("jetverify/dashboard")
+                    }
+                    else {
+                      alert("Wrong details")
+                    }
+                    // handleIndividualLogin(e);
                   }}>
                   Proceed
-            </button>
+                </button>
+                {/* <Route
+                  path="/"
+                  element={ cartItems.length < 1 ? <Navigate to="/products" /> : <Checkout /> }
+                />; */}
               </div>
             </div>
           </form>

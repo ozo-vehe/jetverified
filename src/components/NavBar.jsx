@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHref } from 'react-router-dom'
 import logo from '../assets/Vector.png'
 import avatar from '../assets/avatar.png'
 
 function NavBar() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const params = useHref()
   return (
     <div className="navbar">
       <div className="nav-image">
@@ -13,7 +13,7 @@ function NavBar() {
 
       <div className="nav-links">
         <ul>
-          {loggedIn ? (
+          {params.includes("dashboard") ? (
             <>
               <Link to={'jetverify/document'}>My Documents</Link>
               <Link to={'jetverify/history'}>History</Link>
