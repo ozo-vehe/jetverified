@@ -131,7 +131,15 @@
     border: none;
 }
 
+/* sign up */
 
+.signup-btn {
+    margin-top: 5rem;
+}
+
+.password-match-text {
+    color: rgb(241, 88, 88);
+}
 
 
 /* responsive sign up form */
