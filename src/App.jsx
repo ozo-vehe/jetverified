@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SignUp from "./routes/SignUp";
+import SignUp from "./routes/sign-up";
 import Login from "./routes/Login";
 import { Outlet } from 'react-router-dom'
 import NavBar from './components/NavBar'

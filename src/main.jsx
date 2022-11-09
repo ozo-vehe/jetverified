@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import SignUp from './routes/SignUp'
-import Login from './routes/SignUp'
+import Login from './routes/Login'
 import './index.css'
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 
