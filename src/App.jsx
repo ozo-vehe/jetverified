@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import SignUp from "./routes/SignUp";
 import Login from "./routes/Login";
-import "./App.css";
+import { Outlet } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import './App.css';
 
 function App() {
   const [isIndividual, setIsindividual] = useState(true);
@@ -33,6 +35,8 @@ function App() {
   return (
     <div className="App">
       {/* <SignUp /> */}
+      <NavBar />
+      <Outlet />
       <Login
         data={data}
         setData={setData}
@@ -43,8 +47,8 @@ function App() {
         confimState={confimState}
         setConfirmState={setConfirmState}
       />
+
     </div>
-  );
-}
+)}
 
 export default App;
