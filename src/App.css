@@ -4,7 +4,7 @@
   font-weight: 16px;
   --pry-color: #094067;
   --pry-color-shade-1: #CED9E1;
-  --pry-color-shade-2: #CED9E1;
+  --pry-color-shade-2: #ced9e128;
   --sec-color: #705A09;
   --sec-color-shade-1: #F0E0A8;
   --sec-color-shade-2: #F4EED8;
@@ -116,8 +116,7 @@ body {
 
 /* Dashboard Section */
 .dashboard {
-  padding: 10px 5%;
-  border: thin solid red;
+  padding: 40px 5%;
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
@@ -137,10 +136,59 @@ h2 { margin-top: 0px; }
   color: var(--sec-color);
 }
 .verification-links {
-  border: thin solid red;
+  margin-top: 20px;
 }
 .verification-links a {
   display: block;
   margin: 10px 0px;
+  color: #2b2b2b;
+}
+
+.other-actions {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: top;
+}
+.document-section,
+.history-section {
+  background-color: var(--pry-color-shade-2);
+  border-radius: 16px;
+  border: thin solid var(--pry-color-shade-1);
+  width: 550px;
+  padding: 20px 40px 40px 40px;
+  box-sizing: border-box;
+  min-height: 400px;
+}
+.document-section h2,
+.history-section h2 {
+  color: var(--pry-color);
+}
+.document-upload {
+  text-align: center;
+}
+.document-upload img,
+.history-img img {
+  width: 170px;
+}
+.document-upload p {
+  margin-bottom: 40px;
+}
+.document-upload a {
+  color: var(--pry-color);
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 32px;
+  background-color: var(--pry-color-shade-1);
+  text-decoration: none;
+}
+
+.history-img {
+  text-align: center;
+}
+.history-img p {
+  font-weight: bold;
 }
 /* Ends Here */

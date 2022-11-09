@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
+import history from '../assets/history.png'
 
 function Dashboard() {
   return (
@@ -18,15 +19,18 @@ function Dashboard() {
         <div className="document-section">
           <h2>My Documents</h2>
           <div className="document-upload">
-            <div className="doc-img">
-              <img src={document} alt="Document Image" />
-            </div>
-            <p></p>
+            <img src={document} alt="Document Image" />
+            <p>You havent verified any documents</p>
             <Link to={'add-document'}>Add New Document +</Link>
           </div>
         </div>
-        <div className="empty-div">
 
+        <div className="history-section">
+          <h2>History</h2>
+          <div className="history-img">
+            <img src={history} alt="History Image" />
+            <p>Entries will appear here when you use your JETVerify account to verify your identity</p>
+          </div>
         </div>
       </div>
     </div>
