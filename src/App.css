@@ -1,5 +1,4 @@
 /* reset */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
 * {
@@ -11,7 +10,6 @@
 
 
 /* sign up page style */
-
 .signup-parent {
     background-color: #949494;
     display: flex;
@@ -218,16 +216,19 @@ body {
 
 
 /* Landing Page Section */
-.landing-page {
-  position: relative;
-  background-image: linear-gradient(40deg,#0084ff1e, #fcfcfc2d);
-  min-height: calc(100vh - 100px);
+/* .landing-page {
+} */
+
+/* Hero section */
+.hero-section {
   padding: 10px 5%;
+  background-image: linear-gradient(40deg,#0084ff1e, #fcfcfc2d);
   display: flex;
+  height: calc(100vh - 90px);
+  gap: 32px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 32px;
 }
 .header-text {
   width: 500px;
@@ -267,6 +268,59 @@ body {
   100% { transform: translateY(10px);}
 }
 
+
+/* Body section */ 
+.info {
+  padding: 30px 5%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  font-size: 1.7rem;
+  color: #f5f5f5;
+  background-color: var(--pry-color);
+}
+
+.about {
+  padding: 30px 5%;
+}
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--pry-color);
+}
+.about p {
+  font-weight: 500;
+}
+
+.individuals,
+.organizations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 12vh 0px;
+}
+.individuals-text,
+.organizations-text {
+  width: 550px;
+  min-height: 350px;
+  padding: 10px 20px;
+}
+.individuals-img,
+.organizations-img {
+  width: 550px;
+  height: 350px;
+  overflow: hidden;
+}
+.individuals-img img,
+.organizations-img img {
+  width: 100%;
+}
 /* Ends Here */
 
 
@@ -321,6 +375,7 @@ h2 { margin-top: 0px; }
 }
 .document-section h2,
 .history-section h2 {
+  margin-bottom: 40px;
   color: var(--pry-color);
 }
 .document-upload {
@@ -347,5 +402,52 @@ h2 { margin-top: 0px; }
 }
 .history-img p {
   font-weight: bold;
+}
+/* Ends Here */
+
+
+/* Footer Section */
+.footer {
+  background-color: var(--pry-color);
+  padding: 20px 5%;
+  color: #f5f5f5;
+}
+
+.footer-logo {
+  margin: 10px 0px;
+}
+.footer-logo img {
+  width: 240px;
+}
+
+.footer-contact {
+  border-bottom: 2px solid #f5f5f5;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.footer-contact div {
+  width: 400px;
+}
+
+.email-number p {
+  margin: 10px 0px;
+}
+
+.footer-nav {
+  text-align: right;
+}
+.footer-nav a {
+  display: block;
+  color: #f5f5f5;
+  margin: 10px 0px;
+  text-decoration: none;
+}
+
+.footer > p {
+  margin: 20px 0px 10px 0px;
+  text-align: center;
 }
 /* Ends Here */

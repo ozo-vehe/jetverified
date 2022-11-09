@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import SignUp from "./routes/SignUp";
-import Login from "./routes/Login";
+// import SignUp from "./routes/SignUp";
+import Login from "./routes/login";
 import { Outlet } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import './App.css';
@@ -37,7 +37,7 @@ function App() {
       {/* <SignUp /> */}
       <NavBar />
       <Outlet />
-      <Login
+      {/* <Login
         data={data}
         setData={setData}
         userDetails={userDetails}
@@ -46,7 +46,7 @@ function App() {
         setIsindividual={setIsindividual}
         confimState={confimState}
         setConfirmState={setConfirmState}
-      />
+      /> */}
 
     </div>
 )}
