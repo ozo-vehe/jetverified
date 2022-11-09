@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import SignUp from "./routes/sign-up";
 import Login from "./routes/Login";
-import { Outlet } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import './App.css';
+import { Outlet, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Dashboard from "./components/Dashboard";
+import "./App.css";
+import Ipfs from "./components/Ipfs";
 
 function App() {
   const [isIndividual, setIsindividual] = useState(true);
@@ -35,20 +37,30 @@ function App() {
   return (
     <div className="App">
       {/* <SignUp /> */}
-      <NavBar />
-      <Outlet />
-      <Login
-        data={data}
-        setData={setData}
-        userDetails={userDetails}
-        setUserDetails={setUserDetails}
-        isIndividual={isIndividual}
-        setIsindividual={setIsindividual}
-        confimState={confimState}
-        setConfirmState={setConfirmState}
-      />
+      {/* <NavBar /> */}
+      <Ipfs />
+      {/* <Routes>
+        <Route
+          path="/login"
+          element={
+            <Login
+              data={data}
+              setData={setData}
+              userDetails={userDetails}
+              setUserDetails={setUserDetails}
+              isIndividual={isIndividual}
+              setIsindividual={setIsindividual}
+              confimState={confimState}
+              setConfirmState={setConfirmState}
+            />
+          }
+        />
 
+        <Route path='/dashboard'  userDetails={userDetails} confimState={confimState} setConfirmState={setConfirmState} />
+      </Routes>
+      <Outlet /> */}
     </div>
-)}
+  );
+}
 
 export default App;

@@ -36,6 +36,8 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
     setLoginPassword(e.target.value);
   };
 
+  
+
   // const handleSubmit = (e) => {
   //     e.preventDefault();
   //     console.log(loginEmail, loginPassword)
@@ -71,12 +73,36 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
         console.log("email found", userDetails, confimState);
         return 'user found'
       }  else {
-        console.log('user not found')
+        setUserDetails({...item})
+        console.log('user not found', userDetails)
         setUserNotFound(true)
       }
     });
    
   };
+
+
+
+// useEffect(() => {
+//     handleIndividualAccount()
+// }, [loginEmail, loginEmail])
+
+
+//   navigate to dashboard 
+function navigateToDashboard() {
+    if(confimState) {
+        window.location.href = "/dashboard";
+    }
+  }
+
+//   set user details to local storage
+    useEffect(() => {
+        if (confimState) {
+            localStorage.setItem('userDetails', JSON.stringify(userDetails))
+            // navigateToDashboard()
+        }
+    }, [confimState])
+
 
   return (
     <div className="signup-parent">
@@ -130,7 +156,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
 
               {userNotfound && <p className="password-match-text">Email and password do no match</p>}
               <div className="submit-btn-container">
-                <button type="submit" className="signup-btn">
+                <button type="submit" className="signup-btn" onClick={navigateToDashboard}>
                   Proceed
             </button>
               </div>

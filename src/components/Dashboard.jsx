@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
+import { useState, useEffect } from 'react'
 
-function Dashboard() {
+function Dashboard({ userDetails, confimState, setConfirmState }) {
+  
+  const [username, setUsername] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("userDetails");
+    const initialValue = JSON.parse(saved);
+    return initialValue.fullname || "user001";
+  });
   return (
     <div className="dashboard">
       <div className="verification">
-        <h2>Welcome User001, Your account is currently inactive</h2>
+        <h2>Welcome {username}, Your account is currently inactive</h2>
         <p>To activate your account, please complete the following steps:</p>
         <div className="verification-links">
           <Link to={'verify'}>Verify Email Address</Link>
