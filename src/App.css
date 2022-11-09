@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+* {
+  font-family: "DM Sans";
+  font-weight: 16px;
+  --pry-color: #094067;
+  --pry-color-shade-1: #CED9E1;
+  --pry-color-shade-2: #CED9E1;
+  --sec-color: #705A09;
+  --sec-color-shade-1: #F0E0A8;
+  --sec-color-shade-2: #F4EED8;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+}
+
+/* Navigation Section */
+.navbar {
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5%;
+  background-color: #fff;
+  height: 70px;
+}
+
+.nav-image {
+  width: 190px;
+  overflow: hidden;
+}
+.nav-image img {
+  width: 100%;
+}
+
+.nav-links ul {
+  min-width: 190px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  gap: 64px;
+  justify-content: center;
+  align-items: center;
+}
+.nav-links ul a {
+  color: var(--pry-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+.nav-links ul a.signup {
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 32px;
+  background-color: var(--pry-color);
+}
+
+
+
+/* Landing Page Section */
+.landing-page {
+  position: relative;
+  background-image: linear-gradient(40deg,#0084ff1e, #fcfcfc2d);
+  min-height: calc(100vh - 100px);
+  padding: 10px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.header-text {
+  width: 500px;
+  min-height: 300px;
+}
+.header-text h1 {
+  color: var(--pry-color);
+  font-size: 2.7rem;
+  margin-bottom: 32px;
+}
+.header-text p {
+  font-weight: bold;
+  margin: 32px 0px;
+}
+.header-text a {
+  margin: 32px 0px;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 32px;
+  background-color: var(--pry-color);
+  text-decoration: none;
+}
+
+.header-image {
+  width: 600px;
+  overflow: hidden;
+}
+.header-image img {
+  width: 100%;
+  transform: translateY(0px);
+  animation: hover-image 2s infinite linear alternate-reverse;
+}
+
+@keyframes hover-image {
+  0% { transform: translateY(-10px); }
+  50% { transform: translateY(0px); }
+  100% { transform: translateY(10px);}
+}
+
+/* Ends Here */
+
+
+
+/* Dashboard Section */
+.dashboard {
+  padding: 10px 5%;
+  border: thin solid red;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+h2 { margin-top: 0px; }
+
+.verification {
+  border: thin solid var(--sec-color-shade-1);
+  width: 100%;
+  background-color: var(--sec-color-shade-2);
+  padding: 32px;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+.verification h2 {
+  color: var(--sec-color);
+}
+.verification-links {
+  border: thin solid red;
+}
+.verification-links a {
+  display: block;
+  margin: 10px 0px;
+}
+/* Ends Here */
