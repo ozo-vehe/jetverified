@@ -1,5 +1,6 @@
 /* reset */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 * {
   margin: 0;
@@ -7,7 +8,9 @@
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
-
+button {
+  cursor: pointer;
+}
 
 /* sign up page style */
 .signup-parent {
@@ -153,7 +156,6 @@
         width: 100%;
     }
 }
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 * {
   font-family: "DM Sans";
   font-weight: 16px;
@@ -388,7 +390,9 @@ h2 { margin-top: 0px; }
 .document-upload p {
   margin-bottom: 40px;
 }
-.document-upload a {
+.document-upload button {
+  border: none;
+  cursor: pointer;
   color: var(--pry-color);
   font-weight: bold;
   padding: 15px 30px;
@@ -451,3 +455,131 @@ h2 { margin-top: 0px; }
   text-align: center;
 }
 /* Ends Here */
+
+
+/* Add Document Section */
+.add-document {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 20px 0px 50px 0px;
+  margin: 0px;
+  background-color: #0000003a;
+}
+.add-details {
+  border-radius: 16px;
+  background-color: #fff;
+  padding: 40px 32px;
+  min-width: 450px;
+}
+.add-document h2 {
+  color: var(--pry-color);
+  margin-bottom: 50px;
+}
+
+.add-document form {
+  text-align: center;
+  box-sizing: border-box;
+}
+.add-document form > div {
+  margin: 20px 0px;
+  box-sizing: border-box;
+}
+.add-document form label {
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+.add-document form input,
+.add-document form select {
+  width: 100%;
+  color: #797878;
+  font-family: 'DM Sans';
+  height: 40px;
+  border-radius: 5px;
+  border: thin solid #797878;
+  padding: 10px 5px;
+}
+
+.doc-image {
+  padding: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.doc-image img {
+  width: 40px;
+}
+.doc-image p,
+.facial-recog p {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.doc-image .front{
+  width: 200px;
+  padding: 30px 10px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px dashed var(--pry-color-shade-1);
+}
+.doc-image .back {
+  width: 200px;
+  padding: 30px 10px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px dashed var(--pry-color-shade-1);
+}
+
+.facial-recog {
+  padding: 15px 10px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px dashed var(--pry-color-shade-1);
+}
+.facial-recog img {
+  width: 40px;
+  margin-bottom: 10px;
+}
+
+form button {
+  border: none;
+  min-width: 100px;
+  padding: 15px 30px;
+  border-radius: 32px;
+  background-color: var(--pry-color);
+  color: #f5f5f5;
+}
+/* End Section */
+
+/* Document Verifiaction Section */
+.doc-verification {
+  text-align: center;
+  padding: 20px 10px 0px 10px;
+}
+.doc-verification img {
+  width: 200px;
+  margin: 30px 0px 10px 0px;
+}
+.doc-verification p {
+  color: var(--pry-color);
+  font-weight: 600;
+  padding: 10px 0px 30px 0px;
+}
+.doc-verification button {
+  border: none;
+  margin-top: 60px;
+  padding: 15px 30px;
+  background-color: var(--pry-color);
+  color: #f5f5f5;
+  font-weight: 500;
+  border-radius: 32px;
+}

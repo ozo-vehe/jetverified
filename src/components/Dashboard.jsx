@@ -1,8 +1,12 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
 import history from '../assets/history.png'
+import AddDocument from './AddDocument'
 
 function Dashboard() {
+  const [show, setShow] = useState(false)
+
   return (
     <div className="dashboard">
       <div className="verification">
@@ -21,7 +25,7 @@ function Dashboard() {
           <div className="document-upload">
             <img src={document} alt="Document Image" />
             <p>You havent verified any documents</p>
-            <Link to={'add-document'}>Add New Document +</Link>
+            <button onClick={()=>{setShow(true)}}>Add New Document +</button>
           </div>
         </div>
 
@@ -33,6 +37,11 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      {show ? (
+        <AddDocument/>
+      ):(
+        ""
+      )}
     </div>
   );
 }
