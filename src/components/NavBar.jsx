@@ -4,7 +4,7 @@ import logo from '../assets/Vector.png'
 import avatar from '../assets/avatar.png'
 
 function NavBar() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div className="navbar">
       <div className="nav-image">
