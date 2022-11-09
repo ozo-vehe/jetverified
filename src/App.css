@@ -1,3 +1,160 @@
+/* reset */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+
+/* sign up page style */
+
+.signup-parent {
+    background-color: #949494;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.sign-up {  
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 75vh;
+    border-radius: 16px;
+    border: 1px solid #E3E3E8;
+    box-shadow: 0px 10px 30px -20px rgba(9, 64, 103, 0.5);
+}
+
+.signup-header {
+    margin-bottom: 2.5rem;
+}
+
+.signup-header-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #094067;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.signup-header-text {
+    font-weight: 700;
+}
+
+.login-text {
+    color: #094067;
+}
+
+.account-type {
+    display: flex;
+    margin-bottom: 1.5rem;
+    gap: 1.2rem;
+}
+
+.account-type button {
+    border-inline: none;
+    border-top: none;
+    background-color: transparent;
+    font-size: .95rem;
+    font-weight: 500;
+    color: #094067;
+    padding-bottom: .2rem;
+}
+
+.inactive {
+    border-bottom: none;
+}
+
+.active {   
+    border-bottom: 1px solid #094067;
+}
+
+/* .form {
+    width: 70%;
+} */
+
+.signup-form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.signup-form-input div {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form-input input {
+    height: 2.2rem;
+    width: 22rem;
+    text-indent: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    border: 1px solid #4A484E;
+    outline: none;
+}
+
+.signup-form-input input::placeholder {
+    color: #4A484E;
+}
+
+.signup-form-input label{
+    font-size: .75rem;
+    font-weight: 500;
+    color:  #4A484E;
+}
+
+.submit-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.submit-btn-container button {
+    padding: 12px 24px;
+    border-radius: 32px;
+    background: #094067;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25;
+    border: none;
+}
+
+/* sign up */
+
+.signup-btn {
+    margin-top: 5rem;
+}
+
+.password-match-text {
+    color: rgb(241, 88, 88);
+}
+
+
+/* responsive sign up form */
+
+@media screen and (max-width: 1270px) {
+    .sign-up {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .sign-up {
+        width: 100%;
+    }
+}
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 * {
   font-family: "DM Sans";
