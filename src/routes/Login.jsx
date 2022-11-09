@@ -116,7 +116,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
                     // await isUser(loginEmail, loginPassword)
                     if(true) {
                       console.log(isUser(loginEmail, loginPassword))
-                      navigate("jetverify/dashboard")
+                      navigate("../jetverify/dashboard")
                     }
                     else {
                       alert("Wrong details")

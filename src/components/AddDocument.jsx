@@ -53,6 +53,8 @@ function AddDocument({show}) {
             <div className="id-number">
               <label htmlFor="doc-id-num">Identification Number</label>
               <input
+                maxLength={11}
+                minLength={11}
                 onChange={(e)=> {
                   setIdNum(e.target.value)
                 }}
