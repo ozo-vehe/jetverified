@@ -552,17 +552,19 @@ h2 { margin-top: 0px; }
   margin-bottom: 10px;
 }
 
-.add-document form button {
+.add-document form button,
+.submit-btn-container button {
   position: relative;
   border: none;
   min-width: 120px;
-  min-height: 45px;
+  min-height: 47px;
   padding: 15px 30px;
   border-radius: 32px;
   background-color: var(--pry-color);
   color: #f5f5f5;
 }
-.add-document form button .loader {
+.add-document form button .loader,
+.submit-btn-container .loader {
   display: block;
   border-bottom: 2px solid #f5f5f5;
   width: 20px;

@@ -7,6 +7,7 @@ function SignUp() {
   const [data, setData] = useState({});
   const [isloading, setIsloading] = useState(true);
   const [passwordMatch, setPasswordMatch] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     fullname: "",  
     email: "",
@@ -42,6 +43,7 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     if(passwordCheck() && form.fullname && form.email) {
       if(isIndividual)  {
         const data = {
@@ -50,11 +52,13 @@ function SignUp() {
         }
         try {
           await uploadUserInfo(data)
+          setLoading(false)
+          alert("Sign Up Successful, please login")
         }catch(e) {
           console.log(e)
         }
-        console.log("Individual")
-        console.log(data)
+        // console.log("Individual")
+        // console.log(data)
       } else {
         const data = {
           ...form,
@@ -62,6 +66,8 @@ function SignUp() {
         }
         try {
           await uploadUserInfo(data)
+          setLoading(false)
+          alert("Sign Up Successful, please login")
         }catch(e) {
           console.log(e)
         }
@@ -71,6 +77,7 @@ function SignUp() {
     }
     else {
       alert("Please fill the form with correct details")
+      setLoading(false)
     }
   };
 
@@ -152,7 +159,13 @@ function SignUp() {
               </div>
               {passwordMatch && <p className="password-match-text">password do not match</p>}
               <div className="submit-btn-container">
-                <button type="submit">Proceed</button>
+                <button>
+                  {loading ? (
+                    <span className='loader'></span>
+                  ):(
+                    <span>Proceed</span>
+                  )}
+                </button>
               </div>
             </div>
           </form>
