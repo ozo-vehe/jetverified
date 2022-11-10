@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsindividual, confimState, setConfirmState }) {
+function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsIndividual, confimState, setConfirmState }) {
 //   const [isIndividual, setIsindividual] = useState(true);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -17,7 +17,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleOrganizationAccount = (e) => {
@@ -25,7 +25,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleLoginEmail = (e) => {

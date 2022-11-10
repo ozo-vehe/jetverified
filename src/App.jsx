@@ -6,7 +6,7 @@ import NavBar from './components/NavBar'
 import './App.css';
 
 function App() {
-  const [isIndividual, setIsindividual] = useState(true);
+  const [isIndividual, setIsIndividual] = useState(true);
   const [data, setData] = useState({});
   const [userDetails, setUserDetails] = useState({});
   const [isloading, setIsloading] = useState(true);
@@ -36,17 +36,19 @@ function App() {
     <div className="App">
       {/* <SignUp /> */}
       <NavBar />
-      <Outlet />
+
       <Login
         data={data}
         setData={setData}
         userDetails={userDetails}
         setUserDetails={setUserDetails}
         isIndividual={isIndividual}
-        setIsindividual={setIsindividual}
+        setIsIndividual={setIsIndividual}
         confimState={confimState}
         setConfirmState={setConfirmState}
       />
+
+      <Outlet />
 
     </div>
 )}
