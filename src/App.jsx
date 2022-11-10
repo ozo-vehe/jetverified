@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import SignUp from "./routes/sign-up";
+import SignUp from "./routes/SignUp";
 import Login from "./routes/Login";
-import { Outlet, Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Dashboard from "./components/Dashboard";
-import "./App.css";
-import Ipfs from "./components/Ipfs";
+import { Outlet, Route, Routes } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import './App.css';
 
 function App() {
   const [isIndividual, setIsindividual] = useState(true);
@@ -16,7 +14,7 @@ function App() {
 
   useEffect(() => {
     if (isIndividual) {
-      fetch("http://localhost:3000/individuals/")
+      fetch("https://jsonplaceholder.typicode.com/users")
         .then((res) => res.json())
         .then((data) => {
           setData(data);
@@ -24,7 +22,7 @@ function App() {
           console.log(data);
         });
     } else {
-      fetch("http://localhost:3000/organizations/")
+      fetch("https://jsonplaceholder.typicode.com/users")
         .then((res) => res.json())
         .then((data) => {
           setData(data);
@@ -37,28 +35,22 @@ function App() {
   return (
     <div className="App">
       {/* <SignUp /> */}
-      {/* <NavBar /> */}
-      <Ipfs />
-      {/* <Routes>
-        <Route
-          path="/login"
-          element={
-            <Login
-              data={data}
-              setData={setData}
-              userDetails={userDetails}
-              setUserDetails={setUserDetails}
-              isIndividual={isIndividual}
-              setIsindividual={setIsindividual}
-              confimState={confimState}
-              setConfirmState={setConfirmState}
-            />
-          }
-        />
-
+      <NavBar />
+      <Outlet />
+      <Login
+        data={data}
+        setData={setData}
+        userDetails={userDetails}
+        setUserDetails={setUserDetails}
+        isIndividual={isIndividual}
+        setIsindividual={setIsindividual}
+        confimState={confimState}
+        setConfirmState={setConfirmState}
+      />
+      <Routes>
         <Route path='/dashboard'  userDetails={userDetails} confimState={confimState} setConfirmState={setConfirmState} />
       </Routes>
-      <Outlet /> */}
+      <Outlet /> 
     </div>
   );
 }

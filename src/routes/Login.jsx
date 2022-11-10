@@ -1,16 +1,20 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { dataFromIPFS } from '../utils/storedData'
 
 function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsindividual, confimState, setConfirmState }) {
-//   const [isIndividual, setIsindividual] = useState(true);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-//   const [data, setData] = useState({});
   const [userNotfound, setUserNotFound] = useState(false)
-//   const [userDetails, setUserDetails] = useState({})
+  const navigate = useNavigate()
 
-//   const [isloading, setIsloading] = useState(true);
+  const isUser = async(loginEmail, loginPassword) => {
+    const storedData = await dataFromIPFS()
+    const {email, password} = storedData
+
+    if(loginEmail === email && loginPassword === password) return true
+    else return false
+  }
 
   const handleIndividualAccount = (e) => {
     if (isIndividual) {
@@ -35,8 +39,6 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
   const handleLoginPassword = (e) => {
     setLoginPassword(e.target.value);
   };
-
-  
 
   // const handleSubmit = (e) => {
   //     e.preventDefault();
@@ -66,15 +68,15 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
   const handleIndividualLogin = (e) => {
     e.preventDefault();
     data.find((item) => {
-      if (item.email === loginEmail && item.password === loginPassword) {
+      // Change item.username to item.password
+      if (item.email === loginEmail && item.username === loginPassword) {
         setUserDetails({...item})
         setConfirmState(true)
         setUserNotFound(false)
         console.log("email found", userDetails, confimState);
         return 'user found'
       }  else {
-        setUserDetails({...item})
-        console.log('user not found', userDetails)
+        console.log('user not found')
         setUserNotFound(true)
       }
     });
@@ -131,7 +133,7 @@ function navigateToDashboard() {
               Organization
             </button>
           </div>
-          <form className="form" onSubmit={handleIndividualLogin}>
+          <form className="form">
             <div className="signup-form-input">
               <div>
                 <label htmlFor="email">Email</label>
@@ -156,9 +158,13 @@ function navigateToDashboard() {
 
               {userNotfound && <p className="password-match-text">Email and password do no match</p>}
               <div className="submit-btn-container">
-                <button type="submit" className="signup-btn" onClick={navigateToDashboard}>
+                <button type="submit" className="signup-btn">
                   Proceed
-            </button>
+                </button>
+                {/* <Route
+                  path="/"
+                  element={ cartItems.length < 1 ? <Navigate to="/products" /> : <Checkout /> }
+                />; */}
               </div>
             </div>
           </form>

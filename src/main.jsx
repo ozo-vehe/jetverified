@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Login from './routes/Login'
+import Login from './routes/login'
 import './index.css'
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 
@@ -12,24 +12,24 @@ import Dashboard from './components/Dashboard'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    basename: "jetverify/",
     element: <App/>,
     errorElement: <PageError/>,
     children: [
       {
-        path: "/",
+        path: "jetverify/",
         element: <LandingPage/>,
       },
       {
-        path: "/signup",
+        path: "jetverify/signup",
         element: <SignUp/>
       },
       {
-        path: "/login",
+        path: "jetverify/login",
         element: <Login />
       },
       {
-        path: "/dashboard",
+        path: "jetverify/dashboard",
         element: <Dashboard/>
       }
     ],

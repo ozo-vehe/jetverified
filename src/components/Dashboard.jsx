@@ -1,15 +1,8 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
-import { useState, useEffect } from 'react'
 
-function Dashboard({ userDetails, confimState, setConfirmState }) {
-  
-  const [username, setUsername] = useState(() => {
-    // getting stored value
-    const saved = localStorage.getItem("userDetails");
-    const initialValue = JSON.parse(saved);
-    return initialValue.fullname || "user001";
-  });
+function Dashboard() {
   return (
     <div className="dashboard">
       <div className="verification">
@@ -26,17 +19,25 @@ function Dashboard({ userDetails, confimState, setConfirmState }) {
         <div className="document-section">
           <h2>My Documents</h2>
           <div className="document-upload">
-            <div className="doc-img">
-              <img src={document} alt="Document Image" />
-            </div>
-            <p></p>
-            <Link to={'add-document'}>Add New Document +</Link>
+            <img src={document} alt="Document Image" />
+            <p>You havent verified any documents</p>
+            <button onClick={()=>{setShow(true)}}>Add New Document +</button>
           </div>
         </div>
-        <div className="empty-div">
 
+        <div className="history-section">
+          <h2>History</h2>
+          <div className="history-img">
+            <img src={history} alt="History Image" />
+            <p>Entries will appear here when you use your JETVerify account to verify your identity</p>
+          </div>
         </div>
       </div>
+      {show ? (
+        <AddDocument show={showVerification}/>
+      ):(
+        ""
+      )}
     </div>
   );
 }
