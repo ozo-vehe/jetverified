@@ -15,14 +15,14 @@ function NavBar() {
         <ul>
           {params.includes("dashboard") ? (
             <>
-              <Link to={'jetverify/document'}>My Documents</Link>
-              <Link to={'jetverify/history'}>History</Link>
+              <Link to={'/document'}>My Documents</Link>
+              <Link to={'/history'}>History</Link>
               <img src={avatar} alt="User Avatar" />
             </>
           ):(
             <>
-              <Link to={'/jetverify/login'}>Login</Link>
-              <Link className='signup' to={'/jetverify/signup'}>Sign Up</Link>
+              <Link to={'/login'}>Login</Link>
+              <Link className='signup' to={'/signup'}>Sign Up</Link>
             </>
           )}
         </ul>

@@ -172,7 +172,7 @@ function navigateToDashboard() {
                     if(await isUser(loginEmail, loginPassword)) {
                       console.log(isUser(loginEmail, loginPassword))
                       // navigate("jetverify/dashboard")
-                      window.location.pathname = "jetverify/dashboard"
+                      window.location.pathname = "/dashboard"
                     }
                     else {
                       alert("Wrong details")

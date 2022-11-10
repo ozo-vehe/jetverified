@@ -41,10 +41,10 @@ function App() {
       <NavBar />
       
       <Routes>
-        <Route path="/jetverify/" element={<LandingPage />}/>
-        <Route path="/jetverify/signup" element={<SignUp />} />
+        <Route path="/" element={<LandingPage />}/>
+        <Route path="/signup" element={<SignUp />} />
         
-        <Route path="/jetverify/login" element={<Login
+        <Route path="/login" element={<Login
           data={data}
           setData={setData}
           userDetails={userDetails}
@@ -56,7 +56,7 @@ function App() {
         />} />
 
         <Route
-          path="/jetverify/dashboard"
+          path="/dashboard"
           userDetails={userDetails}
           confimState={confimState}
           setConfirmState={setConfirmState}
