@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
 
 function Dashboard() {
+  const [show, setShow] = useState(false)
+  const showVerification=(data) => {
+    const {show} = data
+    setShow(show)
+  }
+
   return (
     <div className="dashboard">
       <div className="verification">

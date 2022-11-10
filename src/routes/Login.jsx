@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { dataFromIPFS } from '../utils/storedData'
 
-function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsindividual, confimState, setConfirmState }) {
+function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsIndividual, confimState, setConfirmState }) {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [userNotfound, setUserNotFound] = useState(false)
@@ -21,15 +21,16 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleOrganizationAccount = (e) => {
+
     if (!isIndividual) {
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleLoginEmail = (e) => {
@@ -69,7 +70,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
     e.preventDefault();
     data.find((item) => {
       // Change item.username to item.password
-      if (item.email === loginEmail && item.username === loginPassword) {
+      if (item.email === loginEmail && item.password === loginPassword) {
         setUserDetails({...item})
         setConfirmState(true)
         setUserNotFound(false)
