@@ -10,7 +10,7 @@ import OrganizationDashboard from "./components/OrganizationDashboard";
 import "./App.css";
 
 function App() {
-  const [isIndividual, setIsIndividual] = useState(false);
+  const [isIndividual, setIsIndividual] = useState(true);
   const [data, setData] = useState({});
   const [userDetails, setUserDetails] = useState({});
   const [isloading, setIsloading] = useState(true);
