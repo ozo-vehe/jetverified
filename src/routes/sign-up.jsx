@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function SignUp() {
-  const [isIndividual, setIsindividual] = useState(true);
+  const [isIndividual, setIsIndividual] = useState(true);
   const [data, setData] = useState({});
   const [isloading, setIsloading] = useState(true);
   const [passwordMatch, setPasswordMatch] = useState(false);
@@ -28,7 +28,7 @@ function SignUp() {
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleOrganizationAccount = (e) => {
@@ -36,7 +36,7 @@ function SignUp() {
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleSubmit = (e) => {

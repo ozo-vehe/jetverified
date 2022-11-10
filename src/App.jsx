@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import Login from "./routes/login";
-import { Outlet } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import './App.css';
+import SignUp from "./routes/sign-up";
+import Login from "./routes/Login";
+import { Outlet, Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
+
+import "./App.css";
 
 function App() {
-  const [isIndividual, setIsindividual] = useState(true);
+  const [isIndividual, setIsIndividual] = useState(true);
   const [data, setData] = useState({});
   const [userDetails, setUserDetails] = useState({});
   const [isloading, setIsloading] = useState(true);
@@ -36,19 +39,33 @@ function App() {
     <div className="App">
       {/* <SignUp /> */}
       <NavBar />
-      <Outlet />
-      {/* <Login
-        data={data}
-        setData={setData}
-        userDetails={userDetails}
-        setUserDetails={setUserDetails}
-        isIndividual={isIndividual}
-        setIsindividual={setIsindividual}
-        confimState={confimState}
-        setConfirmState={setConfirmState}
-      /> */}
+      
+      <Routes>
+        <Route path="/jetverify" element={<LandingPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        
+        <Route path="/login" element={<Login
+          data={data}
+          setData={setData}
+          userDetails={userDetails}
+          setUserDetails={setUserDetails}
+          isIndividual={isIndividual}
+          setIsIndividual={setIsIndividual}
+          confimState={confimState}
+          setConfirmState={setConfirmState}
+        />} />
 
+        <Route
+          path="/dashboard"
+          userDetails={userDetails}
+          confimState={confimState}
+          setConfirmState={setConfirmState}
+          element={<Dashboard />} 
+        />
+      </Routes>
+      {/* <Outlet /> */}
     </div>
-)}
+  );
+}
 
 export default App;

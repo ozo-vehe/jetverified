@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
-import history from '../assets/history.png'
-import AddDocument from './AddDocument'
 
 function Dashboard() {
   const [show, setShow] = useState(false)
@@ -14,7 +12,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="verification">
-        <h2>Welcome User001, Your account is currently inactive</h2>
+        <h2>Welcome {username}, Your account is currently inactive</h2>
         <p>To activate your account, please complete the following steps:</p>
         <div className="verification-links">
           <Link to={'verify'}>Verify Email Address</Link>

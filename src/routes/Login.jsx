@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { dataFromIPFS } from '../utils/storedData'
 
-function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsindividual, confimState, setConfirmState }) {
+function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIsIndividual, confimState, setConfirmState }) {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [userNotfound, setUserNotFound] = useState(false)
@@ -21,15 +21,16 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleOrganizationAccount = (e) => {
+
     if (!isIndividual) {
       return;
     }
 
-    setIsindividual((prev) => !prev);
+    setIsIndividual((prev) => !prev);
   };
 
   const handleLoginEmail = (e) => {
@@ -40,23 +41,71 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
     setLoginPassword(e.target.value);
   };
 
+  // const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     console.log(loginEmail, loginPassword)
+  // }
+
+//   useEffect(() => {
+//     if (isIndividual) {
+//       fetch("http://localhost:3000/individuals/")
+//         .then((res) => res.json())
+//         .then((data) => {
+//           setData(data);
+//           setIsloading(false);
+//           console.log(data);
+//         });
+//     } else {
+//       fetch("http://localhost:3000/organizations/")
+//         .then((res) => res.json())
+//         .then((data) => {
+//           setData(data);
+//           setIsloading(false);
+//           console.log(data);
+//         });
+//     }
+//   }, [isIndividual]);
+
   const handleIndividualLogin = (e) => {
     e.preventDefault();
     data.find((item) => {
       // Change item.username to item.password
-      if (item.email === loginEmail && item.username === loginPassword) {
+      if (item.email === loginEmail && item.password === loginPassword) {
         setUserDetails({...item})
         setConfirmState(true)
         setUserNotFound(false)
         console.log("email found", userDetails, confimState);
-        return 'user found';
-      } else {
+        return 'user found'
+      }  else {
         console.log('user not found')
         setUserNotFound(true)
       }
     });
    
   };
+
+
+
+// useEffect(() => {
+//     handleIndividualAccount()
+// }, [loginEmail, loginEmail])
+
+
+//   navigate to dashboard 
+function navigateToDashboard() {
+    if(confimState) {
+        window.location.href = "/dashboard";
+    }
+  }
+
+//   set user details to local storage
+    useEffect(() => {
+        if (confimState) {
+            localStorage.setItem('userDetails', JSON.stringify(userDetails))
+            // navigateToDashboard()
+        }
+    }, [confimState])
+
 
   return (
     <div className="signup-parent">
@@ -110,19 +159,7 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
 
               {userNotfound && <p className="password-match-text">Email and password do no match</p>}
               <div className="submit-btn-container">
-                <button className="signup-btn"
-                  onClick={ async (e)=> {
-                    e.preventDefault()
-                    // await isUser(loginEmail, loginPassword)
-                    if(true) {
-                      console.log(isUser(loginEmail, loginPassword))
-                      navigate("../jetverify/dashboard")
-                    }
-                    else {
-                      alert("Wrong details")
-                    }
-                    // handleIndividualLogin(e);
-                  }}>
+                <button type="submit" className="signup-btn">
                   Proceed
                 </button>
                 {/* <Route
