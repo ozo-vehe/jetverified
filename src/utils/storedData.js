@@ -5,6 +5,7 @@ const makeStorageClient = () => { return new Web3Storage({ token: getAccessToken
 const client = makeStorageClient();
 let url = ""
 
+// Fetch all the data stored on the IPFS
 async function listUploads () {
   console.log("Listing uploads")
   const links = []
@@ -53,7 +54,7 @@ export const uploadUserInfo = async (info) => {
     url = `https://${file_cid}.ipfs.w3s.link/${file_name}.json`;
     console.log(url)
 
-    listUploads()
+    await listUploads()
   }catch(err) {
     console.log(err)
   }
