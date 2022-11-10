@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {uploadUserInfo} from '../utils/storedData'
 
 function SignUp() {
   const [isIndividual, setIsindividual] = useState(true);
@@ -39,57 +40,44 @@ function SignUp() {
     setIsindividual((prev) => !prev);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form)
+    if(passwordCheck() && form.fullname && form.email) {
+      if(isIndividual)  {
+        const data = {
+          ...form,
+          role: "individual"
+        }
+        try {
+          await uploadUserInfo(data)
+        }catch(e) {
+          console.log(e)
+        }
+        console.log("Individual")
+        console.log(data)
+      } else {
+        const data = {
+          ...form,
+          role: "organization"
+        }
+        try {
+          await uploadUserInfo(data)
+        }catch(e) {
+          console.log(e)
+        }
+        console.log(data)
+        console.log("Organisation")
+      }
+    }
+    else {
+      alert("Please fill the form with correct details")
+    }
   };
 
-
-
-
-
-
-  useEffect(() => {
-    fetch("https://my-json-server.typicode.com/codeinn001/json-server/individuals/")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-            setIsloading(false)
-            console.log(data)
-      }
-      );
-      
-    
-  }, []);
-
-
   
-  async function submitData() {
-    if(form.password !== form.password2){
-      return setPasswordMatch(true)
-    }
-
-    if(isIndividual)  {
-      const response = await fetch("https://my-json-server.typicode.com/codeinn001/json-server/individuals/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        });
-        const data = await response.json();
-        console.log(data);
-    } else {
-      const response = await fetch("https://my-json-server.typicode.com/codeinn001/json-server/organizations/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        });
-        const data = await response.json();
-        console.log(data);
-    }
+  function passwordCheck() {
+    if(form.password === form.password2)return true
+    else return false
   }
 
 
@@ -128,7 +116,7 @@ function SignUp() {
                   type="fullname"
                   name="fullname"
                   id="fullname"
-                  placeholder="Enter Password"
+                  placeholder="Firstname, Lastname"
                   onChange={handleChange}
                 />
               </div>
@@ -164,7 +152,7 @@ function SignUp() {
               </div>
               {passwordMatch && <p className="password-match-text">password do not match</p>}
               <div className="submit-btn-container">
-                <button type="submit" onClick={submitData}>Proceed</button>
+                <button type="submit">Proceed</button>
               </div>
             </div>
           </form>

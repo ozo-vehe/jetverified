@@ -6,14 +6,26 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [userNotfound, setUserNotFound] = useState(false)
+  const [users, setUsers] = useState([])
   const navigate = useNavigate()
 
   const isUser = async(loginEmail, loginPassword) => {
-    const storedData = await dataFromIPFS()
-    const {email, password} = storedData
+    console.log("Waiting....")
+    let user = {}
+    let storedData = await dataFromIPFS()
+    setUsers(storedData)
+    console.log(users)
+    users.forEach((d) => {
+      console.log("Data")
+      console.log(d)
+    })
 
-    if(loginEmail === email && loginPassword === password) return true
-    else return false
+    user = users.find((data) => {
+      return loginEmail == data.email && loginPassword == data.password
+    })
+    console.log(user)
+    if(!user) return false
+    else return true
   }
 
   const handleIndividualAccount = (e) => {
@@ -38,24 +50,6 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
 
   const handleLoginPassword = (e) => {
     setLoginPassword(e.target.value);
-  };
-
-  const handleIndividualLogin = (e) => {
-    e.preventDefault();
-    data.find((item) => {
-      // Change item.username to item.password
-      if (item.email === loginEmail && item.username === loginPassword) {
-        setUserDetails({...item})
-        setConfirmState(true)
-        setUserNotFound(false)
-        console.log("email found", userDetails, confimState);
-        return 'user found';
-      } else {
-        console.log('user not found')
-        setUserNotFound(true)
-      }
-    });
-   
   };
 
   return (
@@ -114,9 +108,10 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
                   onClick={ async (e)=> {
                     e.preventDefault()
                     // await isUser(loginEmail, loginPassword)
-                    if(true) {
+                    if(await isUser(loginEmail, loginPassword)) {
                       console.log(isUser(loginEmail, loginPassword))
-                      navigate("../jetverify/dashboard")
+                      // navigate("jetverify/dashboard")
+                      window.location.pathname = "jetverify/dashboard"
                     }
                     else {
                       alert("Wrong details")
