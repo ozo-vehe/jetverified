@@ -3,6 +3,9 @@ import SignUp from "./routes/sign-up";
 import Login from "./routes/Login";
 import { Outlet, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
+
 import "./App.css";
 
 function App() {
@@ -38,8 +41,10 @@ function App() {
       <NavBar />
       
       <Routes>
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<Login
+        <Route path="/jetverify" element={<LandingPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        
+        <Route path="/login" element={<Login
           data={data}
           setData={setData}
           userDetails={userDetails}
@@ -55,9 +60,10 @@ function App() {
           userDetails={userDetails}
           confimState={confimState}
           setConfirmState={setConfirmState}
+          element={<Dashboard />} 
         />
       </Routes>
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 }
