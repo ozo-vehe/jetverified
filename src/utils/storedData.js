@@ -63,17 +63,25 @@ export const uploadUserInfo = async (info) => {
 export const verifyNin = async(docType, docId) =>{
   console.log("Loading...")
   let searchType;
-  if(docType == "NIN") { searchType = "NIN-SEARCH" }
+  let apiKey;
+  if(docType == "NIN") {
+    searchType = "NIN-SEARCH"
+    apiKey = 'DTHswgJl1K3roPN5FeVp'
+  }
+  else if(docType = "BVN") {
+    searchType = "BVN-FULL-DETAILS"
+    apiKey = "h04rUoCErKeUYueFN0Bs"
+  }
   const options = {
     method: 'POST',
     headers: {
       accept: 'application/json',
       userid: '1668011372112',
-      apiKey: 'DTHswgJl1K3roPN5FeVp',
+      apiKey: apiKey,
       'content-type': 'application/json'
     },
     body: JSON.stringify({
-      searchParameter: '02730846093',
+      searchParameter: docId,
       verificationType: searchType,
       transactionReference: ""
     })
@@ -83,13 +91,24 @@ export const verifyNin = async(docType, docId) =>{
     console.log("Fetching...")
     const data = await fetch('https://api.verified.africa/sfx-verify/v3/id-service/', options)
     const result =  await data.json()
-    // console.log(result.response[0])
-    const { email, firstname, surname, gender} = result.response[0]
-    const userData = {
-      NINEmail: email,
-      firstname,
-      surname,
-      gender
+    console.log(result)
+    let userData;
+    if(docType == "NIN") {
+      const verificationStatus = result.verificationStatus
+      const { email, firstname, surname } = result.response[0]
+      userData = {
+        NINEmail: email,
+        firstname,
+        surname,
+        verificationStatus
+      }
+    }
+    else if(docType == "BVN") {
+      const { firstname, surname} = result.response[0]
+      userData = {
+        firstname,
+        surname
+      }
     }
     console.log(userData)
     return userData
@@ -97,6 +116,7 @@ export const verifyNin = async(docType, docId) =>{
     console.log(err)
   } 
 }
+
 
 export const dataFromIPFS = async() => {
   const cids = await listUploads();
@@ -110,10 +130,8 @@ export const dataFromIPFS = async() => {
       let fileUrl = `https://${res[0].cid}.ipfs.w3s.link`
       // console.log(fileUrl)
       let file = await fetchData(fileUrl)
-      let x = JSON.parse(file)
       ipfsData.push(JSON.parse(file))
     })
-    console.log(ipfsData)
     return ipfsData;
   }
   catch(error) {

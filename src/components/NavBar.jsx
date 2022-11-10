@@ -21,8 +21,8 @@ function NavBar() {
             </>
           ):(
             <>
-              <Link to={'/login'}>Login</Link>
-              <Link className='/signup' to={'/signup'}>Sign Up</Link>
+              <Link to={'/jetverify/login'}>Login</Link>
+              <Link className='signup' to={'/jetverify/signup'}>Sign Up</Link>
             </>
           )}
         </ul>

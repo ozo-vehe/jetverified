@@ -35,13 +35,13 @@ button:enabled {
 }
 
 .sign-up {  
-    width: 30%;
+    width: 430px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
-    height: 75vh;
+    padding: 30px 10px;
     border-radius: 16px;
     border: 1px solid #E3E3E8;
     box-shadow: 0px 10px 30px -20px rgba(9, 64, 103, 0.5);

@@ -11,16 +11,10 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
 
   const isUser = async(loginEmail, loginPassword) => {
     console.log("Waiting....")
-    let user = {}
     let storedData = await dataFromIPFS()
     setUsers(storedData)
     console.log(users)
-    users.forEach((d) => {
-      console.log("Data")
-      console.log(d)
-    })
-
-    user = users.find((data) => {
+    const user = users.find((data) => {
       return loginEmail == data.email && loginPassword == data.password
     })
     console.log(user)
@@ -53,8 +47,6 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
     setLoginPassword(e.target.value);
   };
 
-<<<<<<< HEAD
-=======
   // const handleSubmit = (e) => {
   //     e.preventDefault();
   //     console.log(loginEmail, loginPassword)
@@ -121,7 +113,6 @@ function navigateToDashboard() {
     }, [confimState])
 
 
->>>>>>> 2c1c4285139f30a7d88bc2324ba2489e9190bc75
   return (
     <div className="signup-parent">
       <div className="sign-up">
@@ -174,7 +165,6 @@ function navigateToDashboard() {
 
               {userNotfound && <p className="password-match-text">Email and password do no match</p>}
               <div className="submit-btn-container">
-<<<<<<< HEAD
                 <button className="signup-btn"
                   onClick={ async (e)=> {
                     e.preventDefault()
@@ -189,15 +179,8 @@ function navigateToDashboard() {
                     }
                     // handleIndividualLogin(e);
                   }}>
-=======
-                <button type="submit" className="signup-btn">
->>>>>>> 2c1c4285139f30a7d88bc2324ba2489e9190bc75
                   Proceed
                 </button>
-                {/* <Route
-                  path="/"
-                  element={ cartItems.length < 1 ? <Navigate to="/products" /> : <Checkout /> }
-                />; */}
               </div>
             </div>
           </form>

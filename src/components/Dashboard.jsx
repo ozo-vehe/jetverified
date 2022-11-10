@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import document from '../assets/document.png'
+import history from '../assets/history.png'
+import AddDocument from './AddDocument'
 
 function Dashboard() {
   const [show, setShow] = useState(false)
+  const username = "User 1"
   const showVerification=(data) => {
     const {show} = data
     setShow(show)
