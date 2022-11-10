@@ -5,11 +5,12 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
+import OrganizationDashboard from "./components/OrganizationDashboard";
 
 import "./App.css";
 
 function App() {
-  const [isIndividual, setIsIndividual] = useState(true);
+  const [isIndividual, setIsIndividual] = useState(false);
   const [data, setData] = useState({});
   const [userDetails, setUserDetails] = useState({});
   const [isloading, setIsloading] = useState(true);
@@ -60,7 +61,7 @@ function App() {
           userDetails={userDetails}
           confimState={confimState}
           setConfirmState={setConfirmState}
-          element={<Dashboard />} 
+          element={isIndividual ? <Dashboard /> : <OrganizationDashboard />} 
         />
       </Routes>
       {/* <Outlet /> */}

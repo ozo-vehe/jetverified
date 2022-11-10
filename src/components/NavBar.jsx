@@ -23,6 +23,7 @@ function NavBar() {
             <>
               <Link to={'/login'}>Login</Link>
               <Link className='/signup' to={'/signup'}>Sign Up</Link>
+              <Link to={'/dashboard'}>dashboard</Link>
             </>
           )}
         </ul>
