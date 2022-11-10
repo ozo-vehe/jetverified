@@ -10,31 +10,6 @@ import PageError  from './routes/page-error'
 import LandingPage from './components/LandingPage'
 import Dashboard from './components/Dashboard'
 
-// const router = createBrowserRouter([
-//   {
-//     basename: "jetverify/",
-//     element: <App/>,
-//     errorElement: <PageError/>,
-//     children: [
-//       {
-//         path: "jetverify/",
-//         element: <LandingPage/>,
-//       },
-//       {
-//         path: "jetverify/signup",
-//         element: <SignUp/>
-//       },
-//       {
-//         path: "jetverify/login",
-//         element: <Login />
-//       },
-//       {
-//         path: "jetverify/dashboard",
-//         element: <Dashboard/>
-//       }
-//     ],
-//   },
-// ])
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
