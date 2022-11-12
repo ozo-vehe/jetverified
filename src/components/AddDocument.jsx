@@ -4,7 +4,7 @@ import DocumentVerification from './DocumentVerification'
 import { useState } from 'react';
 import { verifyNin } from '../utils/storedData'
 
-function AddDocument({show}) {
+function AddDocument({show, isVerified}) {
   const [verification, setVerification] = useState(false)
   const [docType, setDocType] = useState("")
   const [idNum, setIdNum] = useState("")
@@ -19,11 +19,20 @@ function AddDocument({show}) {
     })
   }
 
+  const verifiedUser = (v)=> {
+    const {verified} = v
+    isVerified({
+      verified
+    })
+  }
+
   // Verify User Details
   const verify = async(type, num) => {
     if(!type || !num) return false
     try {
-      return await verifyNin(type, num);
+      const res = await verifyNin(type, num)
+      console.log(res)
+      return res;
     }catch(e) {
       console.log(e)
     }
@@ -34,7 +43,7 @@ function AddDocument({show}) {
       <div className="add-details">
         <h2>Add new document <span onClick={()=>{show({show:false})}}>X</span></h2>
         {verification ? (
-          <DocumentVerification userData={{...data}} show={showPopup}/>
+          <DocumentVerification userData={{...data}} show={showPopup} verified={verifiedUser}/>
           ):(
           <form>
             <div className="doucment-type">

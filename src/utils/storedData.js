@@ -38,8 +38,6 @@ const makeFileObjects = (file, file_name) => {
 }
 
 export const uploadUserInfo = async (info) => {
-  const {} = info
-
   const data = JSON.stringify({
     ...info
   })
@@ -55,6 +53,7 @@ export const uploadUserInfo = async (info) => {
     console.log(url)
 
     await listUploads()
+    return true
   }catch(err) {
     console.log(err)
   }
@@ -95,13 +94,22 @@ export const verifyNin = async(docType, docId) =>{
     console.log(result)
     let userData;
     if(docType == "NIN") {
-      const verificationStatus = result.verificationStatus
-      const { email, firstname, surname } = result.response[0]
-      userData = {
-        NINEmail: email,
-        firstname,
-        surname,
-        verificationStatus
+      if(result.verificationStatus == "FAILED") {
+        const { verificationStatus, description } = result
+        userData = {
+          verificationStatus,
+          description
+        }
+      }
+      else if(result.verificationStatus !== "FAILED") {
+        const verificationStatus = result.verificationStatus
+        const { email, firstname, surname } = result.response[0]
+        userData = {
+          NINEmail: email,
+          firstname,
+          surname,
+          verificationStatus
+        }
       }
     }
     else if(docType == "BVN") {
@@ -127,9 +135,9 @@ export const dataFromIPFS = async() => {
     cids.forEach(async (cid) => {
       let data = await client.get(cid)
       let res = await data.files();
-      // console.log(res)
-      let fileUrl = `https://${res[0].cid}.ipfs.w3s.link`
-      // console.log(fileUrl)
+      let fname = trimName(res[0].name)
+      let fileUrl = `https://${cid}.ipfs.w3s.link/${fname}`
+      console.log(fileUrl)
       let file = await fetchData(fileUrl)
       ipfsData.push(JSON.parse(file))
     })

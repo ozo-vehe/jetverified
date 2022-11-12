@@ -6,10 +6,16 @@ import AddDocument from './AddDocument'
 
 function Dashboard() {
   const [show, setShow] = useState(false)
+  const [verif, setVerif] = useState(false)
   const username = "User 1"
   const showVerification=(data) => {
     const {show} = data
     setShow(show)
+  }
+
+  const verification = (v) => {
+    const {verified} = v
+    setVerif(verified)
   }
 
   return (
@@ -27,11 +33,17 @@ function Dashboard() {
       <div className="other-actions">
         <div className="document-section">
           <h2>My Documents</h2>
-          <div className="document-upload">
-            <img src={document} alt="Document Image" />
-            <p>You havent verified any documents</p>
-            <button onClick={()=>{setShow(true)}}>Add New Document +</button>
-          </div>
+          {verif ? (
+            <div className="uploaded-doc">
+              <p>National Identity Number  <span>Learn more</span></p>
+            </div>
+          ):(
+            <div className="document-upload">
+              <img src={document} alt="Document Image" />
+              <p>You havent verified any documents</p>
+            </div>
+          )}
+          <button onClick={()=>{setShow(true)}}>Add New Document +</button>
         </div>
 
         <div className="history-section">
@@ -43,7 +55,7 @@ function Dashboard() {
         </div>
       </div>
       {show ? (
-        <AddDocument show={showVerification}/>
+        <AddDocument isVerified={verification} show={showVerification}/>
       ):(
         ""
       )}

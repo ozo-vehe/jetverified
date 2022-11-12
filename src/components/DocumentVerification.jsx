@@ -2,8 +2,7 @@ import { useState } from 'react'
 import process from '../assets/progress.png'
 import {dataFromIPFS} from '../utils/storedData'
 
-function DocumentVerification({userData, show}) {
-  console.log(userData)
+function DocumentVerification({userData, show, verified}) {
   const [disable, setDisable] = useState(true);
   const [status, setStatus] = useState("");
   const [users, setUsers] = useState([]);
@@ -14,22 +13,37 @@ function DocumentVerification({userData, show}) {
   }
   const verificationCheck = async() => {
     const IPFSData = await dataFromIPFS();
-    const {NINEmail, surname, firstname, verificationStatus} = userData
+    const {verificationStatus} = userData
     setUsers(IPFSData)
     console.log(users)
-    const user = users.find((u)=>{u.email == NINEmail})
-    console.log(user)
 
-    if(NINEmail === user.email && nameCheck(user.fullname, firstname, surname)) {
-      setDisable(false)
-      console.log("true")
-      return true
+    if(verificationStatus == "FAILED") {
+      const {description} = userData
+      setStatus(`${verificationStatus}, ${description}...please try again another time`)
+      return false;
     }
-    else {
-      console.log("false")
-      return false
+
+    else if(verificationStatus !== "FAILED") {
+      const {firstname, surname, NINEmail} = userData
+      const user = users.find((u)=>{u.email == NINEmail})
+      console.log(user)
+
+      if(NINEmail === user.email && nameCheck(user.fullname, firstname, surname)) {
+        setDisable(false)
+        verified({
+          verified: true
+        })
+        console.log("true")
+        return true
+      }
+
+      else {
+        console.log("false")
+        alert("Details submitted not correct not correct")
+        return false
+      }
     }
-    setStatus(verificationStatus)
+    // const NIN = 64556334920
   }
 
   return (

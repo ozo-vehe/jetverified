@@ -9,16 +9,26 @@ function Login({ data, setData, userDetails, setUserDetails, isIndividual, setIs
   const [users, setUsers] = useState([])
   const navigate = useNavigate()
 
+  const fetchUser = async()=> {
+    console.log("Fetching users...")
+    let storedData = await dataFromIPFS()
+    console.log(storedData)
+    setUsers(storedData)
+
+    return users
+  }
   const isUser = async(loginEmail, loginPassword) => {
     console.log("Waiting....")
-    let storedData = await dataFromIPFS()
-    setUsers(storedData)
-    console.log(users)
-    const user = users.find((data) => {
-      return loginEmail == data.email && loginPassword == data.password
+    let storedUsers = await fetchUser()
+    const user = []
+    console.log(storedUsers)
+    storedUsers.forEach((u)=> {
+      if(u.email == loginEmail && u.password == loginPassword) {
+        console.log(u)
+        user.push(u)
+      }
     })
-    console.log(user)
-    if(!user) return false
+    if(user.length < 1) return false
     else return true
   }
 
@@ -106,6 +116,7 @@ function navigateToDashboard() {
 
 //   set user details to local storage
     useEffect(() => {
+      fetchUser()
         if (confimState) {
             localStorage.setItem('userDetails', JSON.stringify(userDetails))
             // navigateToDashboard()
@@ -149,7 +160,10 @@ function navigateToDashboard() {
                   name="email"
                   id="email"
                   placeholder="Enter Email"
-                  onChange={handleLoginEmail}
+                  onChange={(e)=>{
+                    setLoginEmail(e.target.value)
+                    console.log("Deployed")
+                  }}
                 />
               </div>
               <div>
@@ -159,7 +173,10 @@ function navigateToDashboard() {
                   name="password"
                   id="password"
                   placeholder="Enter Password"
-                  onChange={handleLoginPassword}
+                  onChange={(e)=>{
+                    setLoginPassword(e.target.value)
+                    // console.log(loginPassword)
+                  }}
                 />
               </div>
 
@@ -169,7 +186,8 @@ function navigateToDashboard() {
                   onClick={ async (e)=> {
                     e.preventDefault()
                     // await isUser(loginEmail, loginPassword)
-                    if(await isUser(loginEmail, loginPassword)) {
+                    const user = await isUser(loginEmail, loginPassword)
+                    if(user) {
                       console.log(isUser(loginEmail, loginPassword))
                       // navigate("jetverify/dashboard")
                       window.location.pathname = "/dashboard"
