@@ -2,6 +2,14 @@
 A Verification Platform for users and organizations/companies
 
 ### DEMO: [JETVerified](https://jetverify.web.app/)
+
+## Tech Stack
+Design: figma
+
+Built with: React JS
+
+Data storage: FileCoin(Web3 storage)
+
 ## What is JETVerified?
 JETVerified is a platform for individuals and organisations to carry out safe and secure transactions without the worry
 
