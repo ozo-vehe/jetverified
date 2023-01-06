@@ -1,6 +1,8 @@
 # JETVerified
 A Verification Platform for users and organizations/companies
 
+<img src="./jetverify.png" alt="JETVerified" />
+
 ### DEMO: [JETVerified](https://jetverify.web.app/)
 
 ## Tech Stack
